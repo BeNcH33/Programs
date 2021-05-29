@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="605.0" prefWidth="940.0">
+         <children>
+            <HBox prefHeight="605.0" prefWidth="408.0">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="293.0">
+                     <children>
+                        <TableView fx:id="TableStudent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="422.0">
+                           <columns>
+                              <TableColumn fx:id="IdStudent" prefWidth="17.0" text="Id" />
+                              <TableColumn fx:id="FamilyStudent" prefWidth="67.0" text="Фамилия" />
+                              <TableColumn fx:id="NameStudent" prefWidth="45.0" text="Имя" />
+                              <TableColumn fx:id="OtchStudent" prefWidth="69.0" text="Отчество" />
+                              <TableColumn fx:id="Sex" prefWidth="29.0" text="Пол" />
+                              <TableColumn fx:id="Birthday" prefWidth="62.0" text="Дата" />
+                              <TableColumn fx:id="SeriaStudent" prefWidth="60.0" text="Серия" />
+                              <TableColumn fx:id="NumberStudent" prefWidth="71.0" text="Номер" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets left="2.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox prefHeight="71.0" prefWidth="422.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Фамилия">
+                                       <VBox.margin>
+                                          <Insets left="25.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddFamily">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Имя">
+                                       <VBox.margin>
+                                          <Insets left="36.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddName">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Отчество">
+                                       <VBox.margin>
+                                          <Insets left="21.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddLastname">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Пол">
+                                       <VBox.margin>
+                                          <Insets left="38.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddSex">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Дата рождения">
+                                       <VBox.margin>
+                                          <Insets left="6.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddDateBirthday">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Серия паспорта">
+                                       <VBox.margin>
+                                          <Insets left="6.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddSeria">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Номер паспорта">
+                                       <VBox.margin>
+                                          <Insets left="4.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddNumber">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Город">
+                                       <VBox.margin>
+                                          <Insets left="32.0" top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="AddTown">
+                                       <VBox.margin>
+                                          <Insets left="2.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox accessibleRole="NODE" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="btnAddStudent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Добавить">
+                                 <HBox.margin>
+                                    <Insets left="166.0" top="25.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="518.0">
+               <children>
+                  <HBox prefHeight="269.0" prefWidth="500.0">
+                     <children>
+                        <VBox prefHeight="269.0" prefWidth="250.0">
+                           <children>
+                              <TableView fx:id="TableRooms" prefHeight="271.0" prefWidth="250.0">
+                                 <columns>
+                                    <TableColumn fx:id="Floor" prefWidth="33.0" text="Этаж" />
+                                    <TableColumn fx:id="NumberRooms" prefWidth="47.0" text="Номер" />
+                                    <TableColumn fx:id="Chear" prefWidth="169.0" text="Мебель" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="269.0" prefWidth="269.0">
+                           <children>
+                              <HBox prefHeight="63.0" prefWidth="269.0">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Этаж">
+                                             <VBox.margin>
+                                                <Insets left="26.0" top="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="AddFloor">
+                                             <VBox.margin>
+                                                <Insets left="2.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Номер">
+                                             <VBox.margin>
+                                                <Insets left="23.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="AddNumberRoom">
+                                             <VBox.margin>
+                                                <Insets left="2.0" top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Button fx:id="AddRoom" mnemonicParsing="false" text="Добавить">
+                                             <VBox.margin>
+                                                <Insets left="10.0" top="27.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="206.0" prefWidth="268.0">
+                                 <children>
+                                    <TextArea fx:id="AddFurniture" prefHeight="206.0" prefWidth="263.0">
+                                       <HBox.margin>
+                                          <Insets left="2.0" right="2.0" />
+                                       </HBox.margin>
+                                    </TextArea>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="134.0" prefWidth="518.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox prefHeight="134.0" prefWidth="250.0">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                           <children>
+                              <TableView fx:id="Violation" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="NameViolation" prefWidth="76.0" text="Название" />
+                                    <TableColumn fx:id="DetailsViolation" prefWidth="173.0" text="Описсание" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="134.0" prefWidth="266.0">
+                           <HBox.margin>
+                              <Insets left="2.0" right="2.0" />
+                           </HBox.margin>
+                           <children>
+                              <HBox prefHeight="52.0" prefWidth="264.0">
+                                 <children>
+                                    <VBox prefHeight="52.0" prefWidth="135.0">
+                                       <children>
+                                          <Label text="Название нарушения">
+                                             <VBox.margin>
+                                                <Insets left="8.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="AddNameViolation">
+                                             <VBox.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="52.0" prefWidth="128.0">
+                                       <children>
+                                          <Button fx:id="btnAddViolation" mnemonicParsing="false" text="Добавить">
+                                             <VBox.margin>
+                                                <Insets left="29.0" top="16.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextArea fx:id="AddDeskriptionViolation" prefHeight="91.0" prefWidth="265.0">
+                                       <HBox.margin>
+                                          <Insets top="2.0" />
+                                       </HBox.margin>
+                                    </TextArea>
+                                 </children>
+                                 <padding>
+                                    <Insets left="2.0" right="2.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="191.0" prefWidth="518.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox prefHeight="169.0" prefWidth="250.0">
+                           <children>
+                              <TableView fx:id="ViolationStudent" prefHeight="200.0" prefWidth="200.0">
+                                 <columns>
+                                    <TableColumn fx:id="idViolationStudent" prefWidth="35.0" text="Id студента" />
+                                    <TableColumn fx:id="CategoryViolation" prefWidth="118.0" text="Название нарушения" />
+                                    <TableColumn fx:id="DateViolation" prefWidth="92.0" text="Дата " />
+                                 </columns>
+                                 <VBox.margin>
+                                    <Insets left="2.0" />
+                                 </VBox.margin>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="190.0" prefWidth="268.0">
+                           <HBox.margin>
+                              <Insets left="2.0" right="2.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label text="ID студента">
+                                 <VBox.margin>
+                                    <Insets left="100.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="AddIdStudViolation">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Название нарушения">
+                                 <VBox.margin>
+                                    <Insets left="75.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="AddNameStudViolation">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button fx:id="bntAddStudViolation" mnemonicParsing="false" text="Зафиксировать">
+                                 <VBox.margin>
+                                    <Insets left="80.0" top="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
