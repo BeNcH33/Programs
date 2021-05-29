@@ -219,7 +219,7 @@
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Button fx:id="AddRoom" mnemonicParsing="false" text="Добавить">
+                                          <Button fx:id="AddRoom" mnemonicParsing="false" onAction="#ButtonAddRoomClick" text="Добавить">
                                              <VBox.margin>
                                                 <Insets left="10.0" top="27.0" />
                                              </VBox.margin>
@@ -285,7 +285,7 @@
                                     </VBox>
                                     <VBox prefHeight="52.0" prefWidth="128.0">
                                        <children>
-                                          <Button fx:id="btnAddViolation" mnemonicParsing="false" text="Добавить">
+                                          <Button fx:id="btnAddViolation" mnemonicParsing="false" onAction="#ButtonAddViolationContentClick" text="Добавить">
                                              <VBox.margin>
                                                 <Insets left="29.0" top="16.0" />
                                              </VBox.margin>
@@ -354,7 +354,13 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button fx:id="bntAddStudViolation" mnemonicParsing="false" text="Зафиксировать">
+                              <Label text="Дата нарушения">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="90.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="addDateViolation" />
+                              <Button fx:id="bntAddStudViolation" mnemonicParsing="false" onAction="#ButtonAddViolationClick" text="Зафиксировать">
                                  <VBox.margin>
                                     <Insets left="80.0" top="10.0" />
                                  </VBox.margin>

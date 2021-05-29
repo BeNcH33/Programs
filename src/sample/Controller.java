@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import jdk.jfr.Name;
 
@@ -57,6 +58,17 @@ public class Controller {
     public TextField AddSeria;
     public TextField AddNumber;
     public TextField AddTown;
+
+    public TextField AddFloor;
+    public TextField AddNumberRoom;
+    public TextArea AddFurniture;
+
+    public TextField AddNameViolation;
+    public TextArea AddDeskriptionViolation;
+
+    public TextField AddIdStudViolation;
+    public TextField AddNameStudViolation;
+    public TextField addDateViolation;
 
 
     @FXML
@@ -302,4 +314,70 @@ public class Controller {
         AddFamily.clear();AddName.clear();AddLastname.clear();AddSex.clear();AddTown.clear();AddDateBirthday.clear();AddSeria.clear();AddNumber.clear();
 
     }
+
+    public void ButtonAddRoomClick(ActionEvent actionEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        int Floor, NumberRoom; String Furniture;
+        Floor=Integer.parseInt(AddFloor.getText());
+        NumberRoom=Integer.parseInt(AddNumberRoom.getText());
+        Furniture=AddFurniture.getText();
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("INSERT rooms (Floor,NumberRoom,Chear) VALUES(?,?,?)");
+        pstmt.setInt(1, Floor);
+        pstmt.setInt(2,NumberRoom);
+        pstmt.setString(3, Furniture);
+        pstmt.executeUpdate();
+        AddFloor.clear();AddNumberRoom.clear();AddFurniture.clear();
+    }
+
+    public void ButtonAddViolationContentClick(ActionEvent actionEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        String NameViolation, Description;
+        NameViolation=AddNameViolation.getText();
+        Description=AddDeskriptionViolation.getText();
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("INSERT violationcontent (NameViolation, Description) VALUES (?,?)");
+        pstmt.setString(1, NameViolation);
+        pstmt.setString(2, Description);
+        pstmt.executeUpdate();
+        AddNameViolation.clear();AddDeskriptionViolation.clear();
+
+    }
+
+    public void ButtonAddViolationClick(ActionEvent actionEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        int id, Date; String Name;
+
+        id=Integer.parseInt(AddIdStudViolation.getText());
+        Name=AddNameStudViolation.getText();
+        Date=Integer.parseInt(addDateViolation.getText());
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("INSERT violation (category,Date, idStudent) VALUES (?,?,?)");
+        pstmt.setString(1,Name);
+        pstmt.setInt(2, Date);
+        pstmt.setInt(3, id);
+        pstmt.executeUpdate();
+        AddIdStudViolation.clear();AddNameStudViolation.clear();addDateViolation.clear();
+
+    }
 }
+
