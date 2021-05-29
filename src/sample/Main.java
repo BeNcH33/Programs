@@ -16,10 +16,6 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 980, 700));
         primaryStage.show();
-        //DbHandler DB =new DbHandler();
-        //Connection conn =DB.getConnection();
-
-
     }
 
 

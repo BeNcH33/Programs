@@ -3,15 +3,15 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import jdk.jfr.Name;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class Controller {
 
     public ObservableList<Student> studentTableObservableList = FXCollections.observableArrayList();
     public ObservableList<Rooms> roomsTableObservableList = FXCollections.observableArrayList();
+    public ObservableList<Violation> violationTableObservableList = FXCollections.observableArrayList();
 
     public TableView <Rooms> TableRooms;
     public TableColumn <Rooms, Integer> Floor;
@@ -48,6 +49,14 @@ public class Controller {
     public TableColumn <Violation, Integer>  idViolationStudent;
     public TableColumn <Violation, String>  CategoryViolation;
     public TableColumn <Violation, Integer>  DateViolation;
+    public TextField AddFamily;
+    public TextField AddName;
+    public TextField AddLastname;
+    public TextField AddSex;
+    public TextField AddDateBirthday;
+    public TextField AddSeria;
+    public TextField AddNumber;
+    public TextField AddTown;
 
 
     @FXML
@@ -68,8 +77,13 @@ public class Controller {
         Chear.setCellValueFactory(clientStringCellDataFeaturese -> clientStringCellDataFeaturese.getValue().getChear());
         TableRooms.setItems(roomsTableObservableList);
 
+        idViolationStudent.setCellValueFactory(cellData -> cellData.getValue().getId().asObject());
+        CategoryViolation.setCellValueFactory(clientStringCellDataFeaturese -> clientStringCellDataFeaturese.getValue().getCategory());
+        DateViolation.setCellValueFactory(cellData -> cellData.getValue().getDate().asObject());
+
         ShowStudentInToTable();
         ShowRoomsInToTable();
+        ShowViolationInToTable();
     }
 
     public void ShowStudentInToTable() {
@@ -87,6 +101,15 @@ public class Controller {
 
         for (Rooms clint : clin) {
             roomsTableObservableList.add(clint);
+        }
+    }
+
+    public void ShowViolationInToTable() {
+
+        List<Violation> clin = GetListViolationInDataBase();
+
+        for (Violation clint : clin) {
+            violationTableObservableList.add(clint);
         }
     }
 
@@ -243,6 +266,40 @@ public class Controller {
         }
         return violationsArrayList;
     }
+
+    public void ButtonAddStudentClick(ActionEvent actionEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        String Family, Name, LastName, Sex, Town;
+        int DateBirthday, Seria, Number;
+
+        Family= AddFamily.getText();
+        Name=AddName.getText();
+        LastName=AddLastname.getText();
+        Sex=AddSex.getText();
+        Town=AddTown.getText();
+        DateBirthday=Integer.parseInt(AddDateBirthday.getText());
+        Seria=Integer.parseInt(AddSeria.getText());
+        Number=Integer.parseInt(AddNumber.getText());
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("INSERT Student(Name, LastName, Otch, PasportSerial, PasportNumber, Sex, DateBirthday, Town) VALUES(?,?,?,?,?,?,?,?)");
+        pstmt.setString(1, Name);
+        pstmt.setString(2, Family);
+        pstmt.setString(3, LastName);
+        pstmt.setInt(4, Seria);
+        pstmt.setInt(5, Number);
+        pstmt.setString(6, Sex);
+        pstmt.setInt(7, DateBirthday);
+        pstmt.setString(8, Town);
+        pstmt.executeUpdate();
+
+        AddFamily.clear();AddName.clear();AddLastname.clear();AddSex.clear();AddTown.clear();AddDateBirthday.clear();AddSeria.clear();AddNumber.clear();
+
+    }
 }
-
-
