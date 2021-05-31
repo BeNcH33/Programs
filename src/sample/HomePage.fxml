@@ -19,7 +19,7 @@
                <children>
                   <VBox prefHeight="400.0" prefWidth="293.0">
                      <children>
-                        <TableView fx:id="TableStudent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="422.0">
+                        <TableView fx:id="TableStudent" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#OnTableStudentClick" prefHeight="358.0" prefWidth="422.0">
                            <columns>
                               <TableColumn fx:id="IdStudent" prefWidth="17.0" text="Id" />
                               <TableColumn fx:id="FamilyStudent" prefWidth="67.0" text="Фамилия" />
