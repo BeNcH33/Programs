@@ -527,6 +527,36 @@ public class Controller {
 
     }
 
-    public void ButtonEditClick(MouseEvent mouseEvent) {
+    public void ButtonEditClick(MouseEvent mouseEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        String Family= AddFamily.getText();
+        String Name=AddName.getText();
+        String LastName=AddLastname.getText();
+        String Sex=AddSex.getText();
+        String Town=AddTown.getText();
+        int DateBirthday=Integer.parseInt(AddDateBirthday.getText());
+        int Seria=Integer.parseInt(AddSeria.getText());
+        int Number=Integer.parseInt(AddNumber.getText());
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("UPDATE Student SET Name=?, LastName=?, Otch=?, PasportSerial=?, PasportNumber=?, Sex=?, DateBirthday=?, Town=?");
+        pstmt.setString(1, Name);
+        pstmt.setString(2, Family);
+        pstmt.setString(3, LastName);
+        pstmt.setInt(4, Seria);
+        pstmt.setInt(5, Number);
+        pstmt.setString(6, Sex);
+        pstmt.setInt(7, DateBirthday);
+        pstmt.setString(8, Town);
+        pstmt.executeUpdate();
+
+        AddFamily.clear();AddName.clear();AddLastname.clear();AddSex.clear();AddTown.clear();AddDateBirthday.clear();AddSeria.clear();AddNumber.clear();
+
     }
 }
