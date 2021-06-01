@@ -156,9 +156,19 @@
                         </HBox>
                         <HBox accessibleRole="NODE" prefHeight="100.0" prefWidth="200.0">
                            <children>
+                              <Button fx:id="ButtonDelete" mnemonicParsing="false" onMouseClicked="#ButtonDeleteClick" text="Удалить">
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="25.0" />
+                                 </HBox.margin>
+                              </Button>
                               <Button fx:id="btnAddStudent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ButtonAddStudentClick" text="Добавить">
                                  <HBox.margin>
-                                    <Insets left="166.0" top="25.0" />
+                                    <Insets left="56.0" top="25.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="buttonEdit" mnemonicParsing="false" onMouseClicked="#ButtonEditClick" text="Изменить">
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="25.0" />
                                  </HBox.margin>
                               </Button>
                            </children>
@@ -173,7 +183,7 @@
                      <children>
                         <VBox prefHeight="269.0" prefWidth="250.0">
                            <children>
-                              <TableView fx:id="TableRooms" prefHeight="271.0" prefWidth="250.0">
+                              <TableView fx:id="TableRooms" onMouseClicked="#OnTableRoomsClick" prefHeight="271.0" prefWidth="250.0">
                                  <columns>
                                     <TableColumn fx:id="Floor" prefWidth="33.0" text="Этаж" />
                                     <TableColumn fx:id="NumberRooms" prefWidth="47.0" text="Номер" />
@@ -254,7 +264,7 @@
                               <Insets left="2.0" />
                            </HBox.margin>
                            <children>
-                              <TableView fx:id="Violation" prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="Violation" onMouseClicked="#OnTableViolationContentClick" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="NameViolation" prefWidth="76.0" text="Название" />
                                     <TableColumn fx:id="DetailsViolation" prefWidth="173.0" text="Описсание" />
@@ -317,7 +327,7 @@
                      <children>
                         <VBox prefHeight="169.0" prefWidth="250.0">
                            <children>
-                              <TableView fx:id="ViolationStudent" prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="ViolationStudent" onMouseClicked="#OnTableViolationStudentClick" prefHeight="200.0" prefWidth="200.0">
                                  <columns>
                                     <TableColumn fx:id="idViolationStudent" prefWidth="35.0" text="Id студента" />
                                     <TableColumn fx:id="CategoryViolation" prefWidth="118.0" text="Название нарушения" />

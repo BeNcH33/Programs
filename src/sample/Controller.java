@@ -472,4 +472,61 @@ public class Controller {
         }
 
     }
+
+    public void OnTableRoomsClick(MouseEvent mouseEvent)
+    {
+        if (mouseEvent.getClickCount()>1)
+        {
+            Rooms selectedItem= TableRooms.getSelectionModel().getSelectedItem();
+            String Floor=String.valueOf(selectedItem.getIntegerFloor());
+            AddFloor.setText(Floor);
+            String NumberRoom=String.valueOf(selectedItem.getIntegerNumberRoom());
+            AddNumberRoom.setText(NumberRoom);
+            AddFurniture.setText(selectedItem.getStringChear());
+        }
+    }
+
+    public void OnTableViolationContentClick(MouseEvent mouseEvent)
+    {
+        if (mouseEvent.getClickCount()>1)
+        {
+            ViolationContent selectedItem=Violation.getSelectionModel().getSelectedItem();
+            AddNameViolation.setText(selectedItem.getName());
+            AddDeskriptionViolation.setText(selectedItem.getDescription());
+            AddNameStudViolation.setText(selectedItem.getName());
+        }
+    }
+
+    public void OnTableViolationStudentClick(MouseEvent mouseEvent)
+    {
+        if (mouseEvent.getClickCount()>1)
+        {
+            Violation selectedItem= ViolationStudent.getSelectionModel().getSelectedItem();
+            String Id=String.valueOf(selectedItem.getIntegerId());
+            AddIdStudViolation.setText(Id);
+            AddNameStudViolation.setText(selectedItem.getStringCategory());
+            String Date=String.valueOf(selectedItem.getIntegerDate());
+            addDateViolation.setText(Date);
+        }
+    }
+
+    public void ButtonDeleteClick(MouseEvent mouseEvent) throws SQLException {
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        int Number=Integer.parseInt(AddNumber.getText());
+
+        PreparedStatement pstmt = null;
+        pstmt = conn.prepareStatement("DELETE FROM Student WHERE PasportNumber=?");
+        pstmt.setInt(1, Number);
+        pstmt.executeUpdate();
+
+    }
+
+    public void ButtonEditClick(MouseEvent mouseEvent) {
+    }
 }
