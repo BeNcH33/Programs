@@ -358,29 +358,43 @@ public class Controller {
         String Family, Name, LastName, Sex, Town;
         int DateBirthday, Seria, Number;
 
-        Family= AddFamily.getText();
-        Name=AddName.getText();
-        LastName=AddLastname.getText();
-        Sex=AddSex.getText();
-        Town=AddTown.getText();
-        DateBirthday=Integer.parseInt(AddDateBirthday.getText());
-        Seria=Integer.parseInt(AddSeria.getText());
-        Number=Integer.parseInt(AddNumber.getText());
+        Family = AddFamily.getText();
+        Name = AddName.getText();
+        LastName = AddLastname.getText();
+        Sex = AddSex.getText();
+        Town = AddTown.getText();
+        DateBirthday = Integer.parseInt(AddDateBirthday.getText());
+        Seria = Integer.parseInt(AddSeria.getText());
+        Number = Integer.parseInt(AddNumber.getText());
 
-        PreparedStatement pstmt = null;
-        pstmt = conn.prepareStatement("INSERT Student(Name, LastName, Otch, PasportSerial, PasportNumber, Sex, DateBirthday, Town) VALUES(?,?,?,?,?,?,?,?)");
-        pstmt.setString(1, Name);
-        pstmt.setString(2, Family);
-        pstmt.setString(3, LastName);
-        pstmt.setInt(4, Seria);
-        pstmt.setInt(5, Number);
-        pstmt.setString(6, Sex);
-        pstmt.setInt(7, DateBirthday);
-        pstmt.setString(8, Town);
-        pstmt.executeUpdate();
+        if (AddFamily.getText() != "" & AddName.getText() != ""
+                & AddLastname.getText() != "" & AddSex.getText() != ""
+                & AddTown.getText() != "" & AddDateBirthday.getText() != ""
+                & AddSeria.getText() != "" & AddNumber.getText() != "")
+        {
 
-        AddFamily.clear();AddName.clear();AddLastname.clear();AddSex.clear();AddTown.clear();AddDateBirthday.clear();AddSeria.clear();AddNumber.clear();
+            PreparedStatement pstmt = null;
+            pstmt = conn.prepareStatement("INSERT Student(Name, LastName, Otch, PasportSerial, PasportNumber, Sex, DateBirthday, Town) VALUES(?,?,?,?,?,?,?,?)");
+            pstmt.setString(1, Name);
+            pstmt.setString(2, Family);
+            pstmt.setString(3, LastName);
+            pstmt.setInt(4, Seria);
+            pstmt.setInt(5, Number);
+            pstmt.setString(6, Sex);
+            pstmt.setInt(7, DateBirthday);
+            pstmt.setString(8, Town);
+            pstmt.executeUpdate();
 
+            AddFamily.clear();
+            AddName.clear();
+            AddLastname.clear();
+            AddSex.clear();
+            AddTown.clear();
+            AddDateBirthday.clear();
+            AddSeria.clear();
+            AddNumber.clear();
+
+        }
     }
 
     public void ButtonAddRoomClick(ActionEvent actionEvent) throws SQLException {
@@ -396,13 +410,19 @@ public class Controller {
         NumberRoom=Integer.parseInt(AddNumberRoom.getText());
         Furniture=AddFurniture.getText();
 
-        PreparedStatement pstmt = null;
-        pstmt = conn.prepareStatement("INSERT rooms (Floor,NumberRoom,Chear) VALUES(?,?,?)");
-        pstmt.setInt(1, Floor);
-        pstmt.setInt(2,NumberRoom);
-        pstmt.setString(3, Furniture);
-        pstmt.executeUpdate();
-        AddFloor.clear();AddNumberRoom.clear();AddFurniture.clear();
+        if (AddFloor.getText()!="" & AddNumberRoom.getText()!="" & AddFurniture.getText()!="")
+        {
+
+            PreparedStatement pstmt = null;
+            pstmt = conn.prepareStatement("INSERT rooms (Floor,NumberRoom,Chear) VALUES(?,?,?)");
+            pstmt.setInt(1, Floor);
+            pstmt.setInt(2, NumberRoom);
+            pstmt.setString(3, Furniture);
+            pstmt.executeUpdate();
+            AddFloor.clear();
+            AddNumberRoom.clear();
+            AddFurniture.clear();
+        }
     }
 
     public void ButtonAddViolationContentClick(ActionEvent actionEvent) throws SQLException {
@@ -416,12 +436,17 @@ public class Controller {
         NameViolation=AddNameViolation.getText();
         Description=AddDeskriptionViolation.getText();
 
-        PreparedStatement pstmt = null;
-        pstmt = conn.prepareStatement("INSERT violationcontent (NameViolation, Description) VALUES (?,?)");
-        pstmt.setString(1, NameViolation);
-        pstmt.setString(2, Description);
-        pstmt.executeUpdate();
-        AddNameViolation.clear();AddDeskriptionViolation.clear();
+        if (AddNameViolation.getText()!="" & AddDeskriptionViolation.getText()!="" )
+        {
+
+            PreparedStatement pstmt = null;
+            pstmt = conn.prepareStatement("INSERT violationcontent (NameViolation, Description) VALUES (?,?)");
+            pstmt.setString(1, NameViolation);
+            pstmt.setString(2, Description);
+            pstmt.executeUpdate();
+            AddNameViolation.clear();
+            AddDeskriptionViolation.clear();
+        }
 
     }
 
@@ -438,13 +463,19 @@ public class Controller {
         Name=AddNameStudViolation.getText();
         Date=Integer.parseInt(addDateViolation.getText());
 
-        PreparedStatement pstmt = null;
-        pstmt = conn.prepareStatement("INSERT violation (category,Date, idStudent) VALUES (?,?,?)");
-        pstmt.setString(1,Name);
-        pstmt.setInt(2, Date);
-        pstmt.setInt(3, id);
-        pstmt.executeUpdate();
-        AddIdStudViolation.clear();AddNameStudViolation.clear();addDateViolation.clear();
+        if (AddIdStudViolation.getText()!="" & AddNameStudViolation.getText()!="" & addDateViolation.getText()!="")
+        {
+
+            PreparedStatement pstmt = null;
+            pstmt = conn.prepareStatement("INSERT violation (category,Date, idStudent) VALUES (?,?,?)");
+            pstmt.setString(1, Name);
+            pstmt.setInt(2, Date);
+            pstmt.setInt(3, id);
+            pstmt.executeUpdate();
+            AddIdStudViolation.clear();
+            AddNameStudViolation.clear();
+            addDateViolation.clear();
+        }
 
     }
 
