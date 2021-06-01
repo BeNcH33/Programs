@@ -33,6 +33,7 @@ public class Controller {
     public ObservableList<Student> studentTableObservableList = FXCollections.observableArrayList();
     public ObservableList<Rooms> roomsTableObservableList = FXCollections.observableArrayList();
     public ObservableList<Violation> violationTableObservableList = FXCollections.observableArrayList();
+    public ObservableList<ViolationContent> violationcontentTableObservableList = FXCollections.observableArrayList();
 
     public TableView <Rooms> TableRooms;
     public TableColumn <Rooms, Integer> Floor;
@@ -42,15 +43,16 @@ public class Controller {
 
 
 
-    public TableView  Violation;
-    public TableColumn  NameViolation;
-    public TableColumn DetailsViolation;
+    public TableView <ViolationContent>  Violation;
+    public TableColumn <ViolationContent, String>  NameViolation;
+    public TableColumn <ViolationContent, String> DetailsViolation;
 
 
     public TableView <Violation> ViolationStudent;
     public TableColumn <Violation, Integer>  idViolationStudent;
     public TableColumn <Violation, String>  CategoryViolation;
     public TableColumn <Violation, Integer>  DateViolation;
+
     public TextField AddFamily;
     public TextField AddName;
     public TextField AddLastname;
@@ -93,10 +95,17 @@ public class Controller {
         idViolationStudent.setCellValueFactory(cellData -> cellData.getValue().getId().asObject());
         CategoryViolation.setCellValueFactory(clientStringCellDataFeaturese -> clientStringCellDataFeaturese.getValue().getCategory());
         DateViolation.setCellValueFactory(cellData -> cellData.getValue().getDate().asObject());
+        ViolationStudent.setItems(violationTableObservableList);
+
+        NameViolation.setCellValueFactory(clientStringCellDataFeaturese -> clientStringCellDataFeaturese.getValue().getnameProperty());
+        DetailsViolation.setCellValueFactory(clientStringCellDataFeaturese -> clientStringCellDataFeaturese.getValue().getdescriptionProperty());
+        Violation.setItems(violationcontentTableObservableList);
 
         ShowStudentInToTable();
         ShowRoomsInToTable();
         ShowViolationInToTable();
+        ShowViolationContentInToTable();
+
     }
 
     public void ShowStudentInToTable() {
@@ -123,6 +132,15 @@ public class Controller {
 
         for (Violation clint : clin) {
             violationTableObservableList.add(clint);
+        }
+    }
+
+    public void ShowViolationContentInToTable() {
+
+        List<ViolationContent> clin = GetListViolationContentInDataBase();
+
+        for (ViolationContent clint : clin) {
+            violationcontentTableObservableList.add(clint);
         }
     }
 
@@ -280,6 +298,55 @@ public class Controller {
         return violationsArrayList;
     }
 
+    public List<ViolationContent> GetListViolationContentInDataBase() {
+        ArrayList<ViolationContent> violationscontentArrayList = new ArrayList<>();
+
+        String query = "SELECT * FROM dormitory.violationcontent;";
+
+        try {
+            statement = conn.createStatement();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        {
+            try {
+                resSet = statement.executeQuery(query);
+
+
+                while (resSet.next())
+                {
+                    int id;
+                    String Name,Description;
+                    id = resSet.getInt("idViolationContent");
+                    Name=resSet.getString("NameViolation");
+                    Description=resSet.getString("Description");
+
+
+                    ViolationContent violation=new ViolationContent();
+                    violation.setId(id);
+                    violation.setName(Name);
+                    violation.setDescription(Description);
+
+                    violationscontentArrayList.add(violation);
+
+                }
+
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return violationscontentArrayList;
+    }
+
+
+
+
+
+
     public void ButtonAddStudentClick(ActionEvent actionEvent) throws SQLException {
         try {
             statement = conn.createStatement();
@@ -387,6 +454,21 @@ public class Controller {
         {
             Student selectedItem= TableStudent.getSelectionModel().getSelectedItem();
             AddFamily.setText(selectedItem.getStringLastName());
+            AddName.setText((selectedItem.getStringName()));
+            AddLastname.setText(selectedItem.getStringOtch());
+            AddSex.setText(selectedItem.getStringSex());
+            String Date=String.valueOf(selectedItem.getIntegerDateBirthday());
+            AddDateBirthday.setText(Date);
+            String Serial=String.valueOf(selectedItem.getIntegerPasportSerial());
+            AddSeria.setText(Serial);
+            String Number =String.valueOf(selectedItem.getIntegerPasportNumber());
+            AddNumber.setText(Number);
+            AddTown.setText(selectedItem.getStringTown());
+
+            //Не забыть парсить стринг в инт когда добавляешь в таблицу с нарушениями
+
+            String ID=String.valueOf(selectedItem.getIntegerId());
+            AddIdStudViolation.setText(ID);
         }
 
     }

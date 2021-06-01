@@ -35,12 +35,8 @@ public class Student
     {
         return id;
     }
-    public Integer getIntegerId() {
-        return id.get();
-    }
-    public void setIntegerId(int id) {
-        this.id.set(id);
-    }
+    public Integer getIntegerId() { return id.get();}
+    public void setIntegerId(int id) {this.id.set(id); }
 
 
     public StringProperty getName() {
@@ -110,9 +106,7 @@ public class Student
     public StringProperty getSex() {
         return Sex;
     }
-    public String getStringSex() {
-        return Sex.get();
-    }
+    public String getStringSex() { return Sex.get(); }
     public void setSex(StringProperty sex) {
         Sex = sex;
     }
