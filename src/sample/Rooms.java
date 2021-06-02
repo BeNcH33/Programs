@@ -9,17 +9,19 @@ public class Rooms
     private IntegerProperty Floor;
     private StringProperty Chear;
     private IntegerProperty NumberRoom;
+    private IntegerProperty IdStudent;
 
-    public Rooms(int id, int Floor, String Chear, int NumberRoom)
+    public Rooms(int id, int Floor, String Chear, int NumberRoom, int IdStudent)
     {
         this.id = new SimpleIntegerProperty(id);
         this.Floor = new SimpleIntegerProperty(Floor);
         this.Chear = new SimpleStringProperty(Chear);
         this.NumberRoom = new SimpleIntegerProperty(NumberRoom);
+        this.IdStudent=new SimpleIntegerProperty(IdStudent);
     }
     public Rooms()
     {
-        this(0,0,"",0);
+        this(0,0,"",0,0);
     }
 
     public IntegerProperty getId()
@@ -64,5 +66,16 @@ public class Rooms
     }
     public void setIntegerNumberRoom(int numberRoom) {
         this.NumberRoom.set(numberRoom);
+    }
+
+    public IntegerProperty getIdStudentRoom()
+    {
+        return IdStudent;
+    }
+    public Integer getIntegerdStudentRoom() {
+        return IdStudent.get();
+    }
+    public void setIntegerdStudentRoom(int idStudent) {
+        this.IdStudent.set(idStudent);
     }
 }

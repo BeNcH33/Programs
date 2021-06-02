@@ -187,7 +187,8 @@
                                  <columns>
                                     <TableColumn fx:id="Floor" prefWidth="33.0" text="Этаж" />
                                     <TableColumn fx:id="NumberRooms" prefWidth="47.0" text="Номер" />
-                                    <TableColumn fx:id="Chear" prefWidth="169.0" text="Мебель" />
+                                    <TableColumn fx:id="Chear" prefWidth="96.0" text="Мебель" />
+                                    <TableColumn fx:id="IdStudent2" prefWidth="75.0" text="Id студента" />
                                  </columns>
                               </TableView>
                            </children>
@@ -240,11 +241,16 @@
                               </HBox>
                               <HBox prefHeight="206.0" prefWidth="268.0">
                                  <children>
-                                    <TextArea fx:id="AddFurniture" prefHeight="206.0" prefWidth="263.0">
-                                       <HBox.margin>
-                                          <Insets left="2.0" right="2.0" />
-                                       </HBox.margin>
-                                    </TextArea>
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <TextArea fx:id="AddFurniture" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="263.0" />
+                                          <TextField fx:id="RoomsIdStudent">
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children>
