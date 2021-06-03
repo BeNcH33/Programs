@@ -597,7 +597,7 @@ public class Controller {
 
     public void OnTableStudentClick(MouseEvent mouseEvent)
     {
-        if (mouseEvent.getClickCount()>1)
+        if (mouseEvent.getClickCount()>0)
         {
             Student selectedItem= TableStudent.getSelectionModel().getSelectedItem();
             AddFamily.setText(selectedItem.getStringLastName());
