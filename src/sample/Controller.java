@@ -115,7 +115,6 @@ public class Controller {
     public void ShowStudentInToTable() {
 
         List<Student> clin = GetListStudentInDataBase();
-        //studentTableObservableList.clear();
         for (Student clint : clin) {
             studentTableObservableList.add(clint);
         }
@@ -130,10 +129,29 @@ public class Controller {
             roomsTableObservableList.add(clint);
         }
     }
+    public void ShowRoomsIdInToTable() {
+        Student selectedItem= TableStudent.getSelectionModel().getSelectedItem();
+
+        List<Rooms> clin = GetListRoomsInDataBase(selectedItem.getIntegerId());
+        roomsTableObservableList.clear();
+        for (Rooms clint : clin) {
+            roomsTableObservableList.add(clint);
+        }
+    }
 
     public void ShowViolationInToTable() {
 
         List<Violation> clin = GetListViolationInDataBase();
+        violationTableObservableList.clear();
+        for (Violation clint : clin) {
+            violationTableObservableList.add(clint);
+        }
+    }
+
+    public void ShowViolationIdInToTable() {
+        Student selectedItem= TableStudent.getSelectionModel().getSelectedItem();
+
+        List<Violation> clin = GetListViolationInDataBase(selectedItem.getIntegerId());
         violationTableObservableList.clear();
         for (Violation clint : clin) {
             violationTableObservableList.add(clint);
@@ -216,43 +234,43 @@ public class Controller {
 
 
     //Вывод информации по определенному пользователю
-//    public List<Rooms> GetListRoomsInDataBase(int ID) {
-//
-//        ArrayList<Rooms> roomsArrayList = new ArrayList<>();
-//
-//        PreparedStatement preparedStatement = null;
-//        try {
-//            preparedStatement = conn.prepareStatement("SELECT * FROM dormitory.rooms WHERE idStudent=?");
-//            preparedStatement.setInt(1, ID);
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//
-//            while (resultSet.next()) {
-//                int id, Floor, NumberRoom, idStudent;
-//                String Chear;
-//                //id = resSet.getInt("idrooms");
-//                Floor = resSet.getInt("Floor");
-//                Chear = resSet.getString("Chear");
-//                NumberRoom = resSet.getInt("NumberRoom");
-//                idStudent = resSet.getInt("idStudent");
-//
-//
-//                Rooms rooms = new Rooms();
-//                //rooms.setIntegerId(id);
-//                rooms.setIntegerFloor(Floor);
-//                rooms.setIntegerNumberRoom(NumberRoom);
-//                rooms.setIntegerdStudentRoom(idStudent);
-//                rooms.setStringChear(Chear);
-//
-//
-//                roomsArrayList.add(rooms);
-//
-//            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//
-//        return roomsArrayList;
-//    }
+    public List<Rooms> GetListRoomsInDataBase(int ID) {
+
+        ArrayList<Rooms> roomsArrayList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement("SELECT * FROM dormitory.rooms WHERE idStudent=?");
+            preparedStatement.setInt(1, ID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int id, Floor, NumberRoom, idStudent;
+                String Chear;
+                id = resultSet.getInt("idrooms");
+                Floor = resultSet.getInt("Floor");
+                Chear = resultSet.getString("Chear");
+                NumberRoom = resultSet.getInt("NumberRoom");
+                idStudent = resultSet.getInt("idStudent");
+
+
+                Rooms rooms = new Rooms();
+                rooms.setIntegerId(id);
+                rooms.setIntegerFloor(Floor);
+                rooms.setIntegerNumberRoom(NumberRoom);
+                rooms.setIntegerdStudentRoom(idStudent);
+                rooms.setStringChear(Chear);
+
+                roomsArrayList.add(rooms);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return roomsArrayList;
+
+    }
 
 
     public List<Rooms> GetListRoomsInDataBase() {
@@ -351,6 +369,41 @@ public class Controller {
         return violationsArrayList;
     }
 
+    // Вывод информации по клику
+    public List<Violation> GetListViolationInDataBase(int ID) {
+        ArrayList<Violation> violationsArrayList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = conn.prepareStatement("SELECT * FROM dormitory.violation WHERE idStudent=?");
+            preparedStatement.setInt(1, ID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+            {
+                int id,Date;
+                String Category;
+                id = resultSet.getInt("idStudent");
+                Category=resultSet.getString("category");
+                Date=resultSet.getInt("Date");
+
+                Violation violation=new Violation();
+                violation.setIntegerId(id);
+                violation.setIntegerDate(Date);
+                violation.setStringCategory(Category);
+
+
+                violationsArrayList.add(violation);
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return violationsArrayList;
+    }
+
+
     public List<ViolationContent> GetListViolationContentInDataBase() {
         ArrayList<ViolationContent> violationscontentArrayList = new ArrayList<>();
 
@@ -438,7 +491,9 @@ public class Controller {
             pstmt.setString(8, Town);
             pstmt.executeUpdate();
 
+            studentTableObservableList.clear();
             ShowStudentInToTable();
+
 
             AddFamily.clear();
             AddName.clear();
@@ -560,7 +615,11 @@ public class Controller {
             AddIdStudViolation.setText(ID);
             RoomsIdStudent.setText(ID);
 
-            //GetListRoomsInDataBase(selectedItem.getIntegerId());
+
+            GetListRoomsInDataBase(selectedItem.getIntegerId());
+            ShowRoomsIdInToTable();
+            GetListViolationInDataBase(selectedItem.getIntegerId());
+            ShowViolationIdInToTable();
         }
 
     }
@@ -618,6 +677,7 @@ public class Controller {
         pstmt = conn.prepareStatement("DELETE FROM Student WHERE PasportNumber=?");
         pstmt.setInt(1, Number);
         pstmt.executeUpdate();
+        studentTableObservableList.clear();
         ShowStudentInToTable();
 
     }
@@ -650,6 +710,7 @@ public class Controller {
         pstmt.setInt(7, DateBirthday);
         pstmt.setString(8, Town);
         pstmt.executeUpdate();
+        studentTableObservableList.clear();
         ShowStudentInToTable();
 
         AddFamily.clear();AddName.clear();AddLastname.clear();AddSex.clear();AddTown.clear();AddDateBirthday.clear();AddSeria.clear();AddNumber.clear();

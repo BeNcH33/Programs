@@ -21,8 +21,8 @@
                      <children>
                         <TableView fx:id="TableStudent" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#OnTableStudentClick" prefHeight="358.0" prefWidth="422.0">
                            <columns>
-                              <TableColumn fx:id="IdStudent" prefWidth="17.0" text="Id" />
-                              <TableColumn fx:id="FamilyStudent" prefWidth="67.0" text="Фамилия" />
+                              <TableColumn fx:id="IdStudent" prefWidth="22.0" text="Id" />
+                              <TableColumn fx:id="FamilyStudent" prefWidth="62.0" text="Фамилия" />
                               <TableColumn fx:id="NameStudent" prefWidth="45.0" text="Имя" />
                               <TableColumn fx:id="OtchStudent" prefWidth="69.0" text="Отчество" />
                               <TableColumn fx:id="Sex" prefWidth="29.0" text="Пол" />
